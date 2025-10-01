@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: #475467;
+  font-family: var(--inter-font), sans-serif;
+}
+
+a {
+  color: #475467;
+}
+a:hover,
+a:focus {
+  text-decoration: none !important;
+}
+
+a.underlined-link:hover,
+a.underlined-link:focus {
+  text-decoration: underline !important;
+}
+
+[type="checkbox"],
+[type="checkbox"]:checked,
+[type="checkbox"]:checked:hover,
+[type="checkbox"]:checked:focus,
+[type="radio"],
+[type="radio"]:checked,
+[type="radio"]:checked:hover,
+[type="radio"]:checked:focus {
+  color: transparent;
+  background-color: white;
+}
+
+[type="checkbox"]:focus,
+[type="radio"]:focus {
+  @apply focus:ring-0 focus:ring-offset-0;
+}
+
+[type="checkbox"]:disabled,
+[type="checkbox"]:disabled:hover,
+[type="radio"]:disabled,
+[type="radio"]:disabled:hover {
+  border-color: #d0d5dd;
+}

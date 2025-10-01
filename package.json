@@ -1,0 +1,49 @@
+{
+  "name": "next-js-template",
+  "description": "A Next.js starter template with TypeScript, Tailwind CSS, Styled Components, Recharts, and RSuite",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Olya Dashuk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olgad21/next-js-template"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-select": "^2.2.5",
+    "@reduxjs/toolkit": "^2.8.2",
+    "axios": "^1.10.0",
+    "dayjs": "^1.11.13",
+    "formik": "^2.4.6",
+    "lodash": "^4.17.21",
+    "next": "15.4.1",
+    "rc-tooltip": "^6.4.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-number-format": "^5.4.4",
+    "react-redux": "^9.2.0",
+    "react-select": "^5.10.2",
+    "recharts": "^3.1.0",
+    "rsuite": "^5.83.1",
+    "styled-components": "^6.1.19",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-styled-components": "^2.1.4",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
