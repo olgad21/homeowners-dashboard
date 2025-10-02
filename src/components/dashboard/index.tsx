@@ -36,11 +36,18 @@ const Dashboard = () => {
     nextRenewalDate,
     reimbursementToDate,
     maxReimbursement,
+    trackerData,
   } = useMemo(() => {
     const currentDate = new Date();
     const renewal_3_date = premiumLockInfo?.renewal_3_date;
     const renewal_1_date = premiumLockInfo?.renewal_1_date;
     const renewal_2_date = premiumLockInfo?.renewal_2_date;
+    const trackerData = [
+      { name: "Origination", value: premiumLockInfo?.origination_premium },
+      { name: "Year 1", value: premiumLockInfo?.year_1_premium ?? 0 },
+      { name: "Year 2", value: premiumLockInfo?.year_2_premium ?? 0 },
+      { name: "Year 3", value: premiumLockInfo?.year_3_premium ?? 0 },
+    ];
     return {
       premiumPrediction: premiumLockInfo?.premium_prediction,
       nextRenewalDate: getNextRenewalDate(currentDate, [
@@ -50,9 +57,11 @@ const Dashboard = () => {
       ]),
       reimbursementToDate: premiumLockInfo?.reimbursement_to_date,
       maxReimbursement: premiumLockInfo?.max_reimbursement,
+      trackerData: trackerData,
     };
   }, [premiumLockInfo]);
 
+  console.log(premiumPrediction, "premiumPrediction main");
   return (
     <div className="flex flex-col items-center justify-items-center p-16 gap-16">
       <Header
@@ -69,7 +78,7 @@ const Dashboard = () => {
             reimbursementToDate={reimbursementToDate}
             maxReimbursement={maxReimbursement}
           />
-          <Tracker />
+          <Tracker data={trackerData} target={premiumPrediction} />
         </div>
       )}
     </div>

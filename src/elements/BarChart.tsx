@@ -1,35 +1,25 @@
 "use client";
+import { map } from "lodash";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
 
-const mockdata = [
-  { name: "Origination", value: 300 },
-  { name: "2019", value: 450 },
-  { name: "2020", value: 200 },
-  { name: "2021", value: 500 },
-];
-
-const mocktarget = 250;
-
 interface DashboardBarChartProps {
-  data?: any;
-  target?: number;
+  data: any;
+  target: number;
 }
 
-const DashboardBarChart = ({
-  data = mockdata,
-  target = mocktarget,
-}: DashboardBarChartProps) => {
+const DashboardBarChart = ({ data, target }: DashboardBarChartProps) => {
+  const maxValue = Math.max(...map(data, (d) => d.value), target);
   return (
     <BarChart
       width={500}
-      height={300}
+      height={600}
       data={data}
-      margin={{ top: 5, right: 30, left: 100, bottom: 5 }}
+      margin={{ top: 100, right: 30, left: 100, bottom: 5 }}
     >
-      <XAxis dataKey="name" hide />
-      <YAxis hide />
+      <XAxis dataKey="name" axisLine={false} tickLine={false} />
+      <YAxis domain={[0, maxValue * 1.1]} hide />
       <Tooltip />
-      <Bar dataKey="value" fill="gray" />
+      <Bar dataKey="value" fill="gray" radius={8} />
       <ReferenceLine
         y={target}
         stroke="green"
