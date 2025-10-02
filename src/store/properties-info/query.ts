@@ -3,8 +3,8 @@ import { baseApi } from "@/store/config";
 // Define a service using a base URL and expected endpoints
 export const propertiesInfoApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProperties: builder.query<any, string>({
-      query: () => `/properties`,
+    getProperties: builder.query<any, void>({
+      query: () => "properties",
     }),
     getPremiumLockInfo: builder.query<any, string>({
       query: (id) => ({
