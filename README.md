@@ -7,8 +7,8 @@ Clone the repository
 git clone [repo-url](https://github.com/olgad21/homeowners-dashboard)
 cd homeowners-dashboard
 
-add .env.local file
-add NEXT_PUBLIC_API_PATH=https://take-home-backend-8bcf0f61c18e.herokuapp.com/ to .env.local
+Create a .env.local file in the root of your project and add the following line:
+NEXT_PUBLIC_API_PATH=https://take-home-backend-8bcf0f61c18e.herokuapp.com/
 
 
 Install dependencies - 
