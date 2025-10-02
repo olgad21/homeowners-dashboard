@@ -1,84 +1,51 @@
-# Next.js Starter Template
-
-A production-ready Next.js starter template with modern tooling. This README documents the project structure and explains the purpose of the main files and folders so you can quickly adapt the template.
+# Homeowners Dashboard Project
 
 ## 🚀 Quick Start
 
-Clone the template and install dependencies:
+Clone the repository
 
-```bash
-git clone https://github.com/YOUR_USERNAME/next-js-template.git my-project
-cd my-project
-pnpm install   # or npm install / yarn
-pnpm dev       # start development server
-```
+git clone [repo-url](https://github.com/olgad21/homeowners-dashboard)
+cd homeowners-dashboard
 
-## Project file structure
 
-Below is the top-level structure of this template with a short description for each file/folder.
+Install dependencies - 
+yarn install
 
-```
-next-js-template/
-	├─ eslint.config.mjs        # ESLint configuration
-	├─ next-env.d.ts            # Next.js TypeScript environment types
-	├─ next.config.ts           # Next.js configuration
-	├─ package.json             # NPM scripts and dependencies
-	├─ postcss.config.mjs       # PostCSS configuration (used by Tailwind)
-	├─ README.md                # This file
-	├─ tailwind.config.js       # TailwindCSS configuration
-	├─ tsconfig.json            # TypeScript compiler options
-	├─ public/                  # Static assets served at the root
-	│   ├─ file.svg
-	│   ├─ globe.svg
-	│   ├─ next.svg
-	│   ├─ vercel.svg
-	│   └─ window.svg
-	└─ src/
-			├─ app/                 # Next.js App Router entry files
-			│   ├─ globals.css      # Global styles (Tailwind entry)
-			│   ├─ layout.tsx       # Root layout (HTML shell + providers)
-			│   ├─ page.tsx         # Example index page
-			│   └─ providers.tsx    # React/Context providers (e.g. theme, stores)
-			├─ assets/              # Project-specific static assets (images, icons)
-			├─ components/          # Reusable React components
-			├─ elements/            # Primitive UI elements or tiny building blocks
-			├─ store/               # Simple state/store setup
-			│   ├─ config.ts        # Store configuration (e.g. persist, devtools)
-			│   └─ index.ts         # Exports the store instance/hooks
-			└─ utils/               # Small utility helpers
-					├─ tailwind.ts      # Tailwind helper utilities (class helpers, cn wrapper)
-					└─ withClientOnly.tsx# Helper for client-only components in the App Router
-```
 
-## Files & folders explained
+Run the development server - 
+yarn dev
 
-- `eslint.config.mjs` — Project lint rules and plugin configuration.
-- `next.config.ts` — Next.js config (routing, images, experimental features).
-- `package.json` — Scripts (dev/build/start), dependencies and metadata.
-- `postcss.config.mjs` & `tailwind.config.js` — Configure Tailwind and PostCSS.
-- `tsconfig.json` & `next-env.d.ts` — TypeScript settings and Next.js type helpers.
-- `public/` — Static files available at `/:filename` (good for favicons, images).
 
-- `src/app/` — App Router root. Typical contents:
+Open your browser and visit
+http://localhost:3000
 
-  - `globals.css` — imports Tailwind base/utilities and project-wide styles.
-  - `layout.tsx` — Top-level layout used by Next.js to wrap pages.
-  - `page.tsx` — The example home page.
-  - `providers.tsx` — A place to assemble React providers (context, theme, stores).
+## Approach
 
-- `src/components/` — Place higher-level, reusable components (Nav, Footer, Card).
-- `src/elements/` — Tiny primitives (Button, Icon, Typography) that components compose.
-- `src/assets/` — Images, svgs or other media specific to the app.
+### Implemented Features (In order of priority):
+1) Property selection (P0)
+2) Insurance Tracker and Comparison with Premium Prediction (Reference line) (P1)
+4) Premium Lock Reimbursement (P1) & Animation (P2)
+5) Insurance Premium Prediction (Top section) (P3 - because the Premium Prediction is already displayed in Insurance Tracker)
+6) Basic styling (widths, section paddings)
 
-- `src/store/` — Minimal store wiring (e.g. Zustand, Redux) with `config.ts` and `index.ts`.
-- `src/utils/` — Small utilities. Current helpers:
-  - `tailwind.ts` — utilities for composing Tailwind class names safely.
-  - `withClientOnly.tsx` — wrapper to render components only on the client side (useful inside App Router where server/client boundaries matter).
+### APIs Integrated (sufficient for all of the features):
+1) Get properties /properties
+2) Get Premium Lock /get-premium-lock
 
-## Extending the template
+### Next to implement (in order of priority):
+1) Active year
+2) Next Renewal Date
+3) Colors for Insurance Tracker Bars for better visibility
+4) Other Styles improvement (colors, fonts, etc.)
+5) Insurance Tracker Animations
+6) Dropdown Customization
+7) Replace the usage of Typescript "any" types
 
-- Add pages under `src/app/` (for App Router) or create nested layouts for sections.
-- Put shared UI in `src/components/` and primitives in `src/elements/`.
-- Configure environment variables in `.env` and update `next.config.ts` if needed.
+### Used in this project:
+1) Next.js – built-in routing and fast developer experience.
+2) RTK Query – for efficient API data fetching and caching, reducing boilerplate and keeping state in sync.
+3) RSuite – for ready-made UI components (e.g., Dropdown) that speed up building clean, consistent interfaces.
+4) Recharts – for simple, customizable charting built on React, perfect for data visualization.
+
 
 ---
