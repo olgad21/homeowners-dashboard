@@ -31,7 +31,12 @@ const Dashboard = () => {
     }
   );
 
-  const { premiumPrediction, nextRenewalDate } = useMemo(() => {
+  const {
+    premiumPrediction,
+    nextRenewalDate,
+    reimbursementToDate,
+    maxReimbursement,
+  } = useMemo(() => {
     const currentDate = new Date();
     const renewal_3_date = premiumLockInfo?.renewal_3_date;
     const renewal_1_date = premiumLockInfo?.renewal_1_date;
@@ -43,6 +48,8 @@ const Dashboard = () => {
         renewal_2_date,
         renewal_3_date,
       ]),
+      reimbursementToDate: premiumLockInfo?.reimbursement_to_date,
+      maxReimbursement: premiumLockInfo?.max_reimbursement,
     };
   }, [premiumLockInfo]);
 
@@ -58,7 +65,10 @@ const Dashboard = () => {
             premiumPrediction={premiumPrediction}
             nextRenewalDate={nextRenewalDate}
           />
-          <Reimbursement />
+          <Reimbursement
+            reimbursementToDate={reimbursementToDate}
+            maxReimbursement={maxReimbursement}
+          />
           <Tracker />
         </div>
       )}

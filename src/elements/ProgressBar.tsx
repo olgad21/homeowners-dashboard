@@ -21,9 +21,9 @@ const ProgressBar = ({ value, maxValue }: ProgressBarProps) => {
   }, [percentage]);
 
   return (
-    <div className="relative h-6 w-full overflow-hidden rounded-full bg-secondary/50">
+    <div className="relative h-6 w-full overflow-hidden rounded-full bg-gray-100">
       <div
-        className="h-full rounded-full transition-all duration-2000 ease-out"
+        className="h-full rounded-full transition-all duration-2000 ease-out bg-gray-100"
         style={{
           width: `${animatedWidth}%`,
           background: "linear-gradient(90deg, #16C64F 0%, #B4EDC7 100%)",
