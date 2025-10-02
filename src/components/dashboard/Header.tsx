@@ -9,7 +9,7 @@ interface HeaderProps {
 const Header = ({ propertyOptions, handlePropertySelect }: HeaderProps) => {
   return (
     <div className="flex justify-between w-full">
-      <div>Homeowners Dashboard</div>
+      <h1 className="text-sm font-medium">Homeowners Dashboard</h1>
       <Dropdown options={propertyOptions} onChange={handlePropertySelect} />
     </div>
   );
