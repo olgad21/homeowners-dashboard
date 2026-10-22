@@ -3,7 +3,7 @@
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
-interface DropdownOption {
+export interface DropdownOption {
   label: string;
   value: string;
 }

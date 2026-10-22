@@ -1,15 +1,21 @@
+import { formatCurrency } from "@/utils/format";
 import { DashboardBlock, SummaryBlock } from "./styles";
 
-const Summary = ({ premiumPrediction, nextRenewalDate }: any) => {
+interface SummaryProps {
+  premiumPrediction: number | null;
+  nextRenewalDate: string;
+}
+
+const Summary = ({ premiumPrediction, nextRenewalDate }: SummaryProps) => {
   return (
-    <DashboardBlock className="flex !p-4 gap-6">
+    <DashboardBlock className="flex gap-6">
       <SummaryBlock>
         <p>Insurance Premiums Prediction</p>
-        <p>{`$${premiumPrediction}`}</p>
+        <p>{formatCurrency(premiumPrediction)}</p>
       </SummaryBlock>
       <SummaryBlock>
         <p>Next Insurance Renewal</p>
-        <p>{`${nextRenewalDate}`}</p>
+        <p>{nextRenewalDate}</p>
       </SummaryBlock>
     </DashboardBlock>
   );

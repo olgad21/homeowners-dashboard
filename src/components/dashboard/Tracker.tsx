@@ -1,9 +1,15 @@
 import DashboardBarChart from "@/elements/BarChart";
+import type { TrackerDatum } from "./config";
 import { DashboardBlock } from "./styles";
 
-const Tracker = ({ data, target }: any) => {
+interface TrackerProps {
+  data: TrackerDatum[];
+  target: number | null;
+}
+
+const Tracker = ({ data, target }: TrackerProps) => {
   return (
-    <DashboardBlock className="!p-4 gap-6">
+    <DashboardBlock className="gap-6">
       <p>Insurance Tracker</p>
       <DashboardBarChart data={data} target={target} />
     </DashboardBlock>

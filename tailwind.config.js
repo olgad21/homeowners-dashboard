@@ -36,7 +36,6 @@ module.exports = {
       green_A100: "#aaefc3",
       green_A750: "#087443",
       light_blue_900: "#005a83",
-      gray_900: "#101828",
       gray_900_0c: "#1018280c",
       green_A700: "#16b264",
       yellow_800: "#fcb022",

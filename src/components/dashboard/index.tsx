@@ -9,15 +9,14 @@ import {
   useGetPremiumLockInfoQuery,
   useGetPropertiesQuery,
 } from "@/store/properties-info/query";
-import { map } from "lodash";
-import { getNextRenewalDate } from "./config";
+import { getDashboardData } from "./config";
 
 const Dashboard = () => {
-  const [selectedProperty, setSelectedProperty] = useState<string>("");
+  const [selectedProperty, setSelectedProperty] = useState("");
   const { data: properties } = useGetPropertiesQuery();
   const propertyOptions = useMemo(
     () =>
-      map(properties, (property) => ({
+      (properties ?? []).map((property) => ({
         value: property.id,
         label: property.address,
       })),
@@ -26,9 +25,7 @@ const Dashboard = () => {
 
   const { data: premiumLockInfo } = useGetPremiumLockInfoQuery(
     selectedProperty,
-    {
-      skip: !selectedProperty,
-    }
+    { skip: !selectedProperty }
   );
 
   const {
@@ -37,31 +34,8 @@ const Dashboard = () => {
     reimbursementToDate,
     maxReimbursement,
     trackerData,
-  } = useMemo(() => {
-    const currentDate = new Date();
-    const renewal_3_date = premiumLockInfo?.renewal_3_date;
-    const renewal_1_date = premiumLockInfo?.renewal_1_date;
-    const renewal_2_date = premiumLockInfo?.renewal_2_date;
-    const trackerData = [
-      { name: "Origination", value: premiumLockInfo?.origination_premium },
-      { name: "Year 1", value: premiumLockInfo?.year_1_premium ?? 0 },
-      { name: "Year 2", value: premiumLockInfo?.year_2_premium ?? 0 },
-      { name: "Year 3", value: premiumLockInfo?.year_3_premium ?? 0 },
-    ];
-    return {
-      premiumPrediction: premiumLockInfo?.premium_prediction,
-      nextRenewalDate: getNextRenewalDate(currentDate, [
-        renewal_1_date,
-        renewal_2_date,
-        renewal_3_date,
-      ]),
-      reimbursementToDate: premiumLockInfo?.reimbursement_to_date,
-      maxReimbursement: premiumLockInfo?.max_reimbursement,
-      trackerData: trackerData,
-    };
-  }, [premiumLockInfo]);
+  } = useMemo(() => getDashboardData(premiumLockInfo), [premiumLockInfo]);
 
-  console.log(premiumPrediction, "premiumPrediction main");
   return (
     <div className="flex flex-col items-center justify-items-center p-16 gap-16">
       <Header

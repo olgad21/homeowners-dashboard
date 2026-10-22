@@ -1,14 +1,14 @@
 "use client";
-import { map } from "lodash";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
+import { formatCurrency } from "@/utils/format";
 
 interface DashboardBarChartProps {
-  data: any;
-  target: number;
+  data: { name: string; value: number }[];
+  target: number | null;
 }
 
 const DashboardBarChart = ({ data, target }: DashboardBarChartProps) => {
-  const maxValue = Math.max(...map(data, (d) => d.value), target);
+  const maxValue = Math.max(...data.map((d) => d.value), target ?? 0);
   return (
     <BarChart
       width={500}
@@ -18,18 +18,20 @@ const DashboardBarChart = ({ data, target }: DashboardBarChartProps) => {
     >
       <XAxis dataKey="name" axisLine={false} tickLine={false} />
       <YAxis domain={[0, maxValue * 1.1]} hide />
-      <Tooltip />
+      <Tooltip formatter={(value) => formatCurrency(Number(value))} />
       <Bar dataKey="value" fill="gray" radius={8} />
-      <ReferenceLine
-        y={target}
-        stroke="green"
-        label={{
-          value: `$${target}`,
-          position: "left",
-          fill: "green",
-          fontSize: 14,
-        }}
-      />
+      {target != null && (
+        <ReferenceLine
+          y={target}
+          stroke="green"
+          label={{
+            value: formatCurrency(target),
+            position: "left",
+            fill: "green",
+            fontSize: 14,
+          }}
+        />
+      )}
     </BarChart>
   );
 };
