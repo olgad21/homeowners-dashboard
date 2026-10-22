@@ -1,16 +1,14 @@
 import { baseApi } from "@/store/config";
+import type { PremiumLockInfo, Property } from "./types";
 
 // Define a service using a base URL and expected endpoints
 export const propertiesInfoApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProperties: builder.query<any, void>({
+    getProperties: builder.query<Property[], void>({
       query: () => "properties",
     }),
-    getPremiumLockInfo: builder.query<any, string>({
-      query: (id) => ({
-        url: `properties/${id}/premium-lock`,
-        method: "GET",
-      }),
+    getPremiumLockInfo: builder.query<PremiumLockInfo, string>({
+      query: (id) => `properties/${id}/premium-lock`,
     }),
   }),
 });

@@ -1,8 +1,7 @@
-import Dropdown from "@/elements/Dropdown";
-import { first } from "lodash";
+import Dropdown, { DropdownOption } from "@/elements/Dropdown";
 
 interface HeaderProps {
-  propertyOptions: { label: string; value: string }[];
+  propertyOptions: DropdownOption[];
   handlePropertySelect?: (value: string) => void;
 }
 

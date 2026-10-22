@@ -9,7 +9,8 @@ interface ProgressBarProps {
 
 const ProgressBar = ({ value, maxValue }: ProgressBarProps) => {
   const [animatedWidth, setAnimatedWidth] = useState(0);
-  const percentage = Math.min((value / maxValue) * 100, 100);
+  const percentage =
+    maxValue > 0 ? Math.min(Math.max((value / maxValue) * 100, 0), 100) : 0;
 
   useEffect(() => {
     // Delay the width animation slightly for better effect
@@ -23,7 +24,7 @@ const ProgressBar = ({ value, maxValue }: ProgressBarProps) => {
   return (
     <div className="relative h-6 w-full overflow-hidden rounded-full bg-gray-100">
       <div
-        className="h-full rounded-full transition-all duration-2000 ease-out bg-gray-100"
+        className="h-full rounded-full transition-all duration-[2000ms] ease-out"
         style={{
           width: `${animatedWidth}%`,
           background: "linear-gradient(90deg, #16C64F 0%, #B4EDC7 100%)",
